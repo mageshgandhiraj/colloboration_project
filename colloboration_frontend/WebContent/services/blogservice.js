@@ -34,7 +34,22 @@ app.factory('BlogService',function($http){
 	    blog.blogRejected=function(id,rejectionReason){
 	    	return $http.put(BASE_URL + '/blogrejected/'+id + "/"+rejectionReason);
 	    }
+	    
+	    blog.getNotification=function(){
+	    	return $http.get(BASE_URL +"/getnotification")
+	    }
+	    
+	    blog.updateNotification=function(id){
+	    	return $http.put(BASE_URL +"/updatenotification/"+id)
+	    }
 
+	    blog.addComment=function(blogComment){
+	    	return $http.post(BASE_URL +"/addblogcomment",blogComment)
+	    }
+
+	    blog.getAllBlogComments=function(id){
+	    	return $http.get(BASE_URL +"/getblogcomments/"+id)
+	    }
 
 		return blog;
 })
