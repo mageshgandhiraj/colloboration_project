@@ -52,10 +52,9 @@
 						<ul class="dropdown-menu">
 							<li><a href="#/addblog">Add Blog</a></li>
 							<li><a href="#/getblogs">Get Blogs</a></li>
+							</ul></li>
 							
-						</ul></li>
-						
-						<li class="dropdown" >
+	<li class="dropdown" >
 <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname"> 
 <span class="glyphicon glyphicon-globe" > 
   <span class="rw-number-notification" ng-if="notificationsCount>0">{{notificationsCount}}</span></span></a>
@@ -67,11 +66,13 @@
    </li>
    </span>
    </ul>
-</li>
-	
-	
-	
+</li>						
+							
 	<li><a href="#/editprofile" ng-show="loggedInUser.firstname">My Profile</a></li>
+	{{loggedInUser.email}}
+	<li><a href="#/uploadprofilepic" ng-show="loggedInUser.firstname"><img src="http://localhost:1995/colloboration_middleware/getimage/{{loggedInUser.email}}"
+	alt="upload picture" width="40px" height="40px"></a></li>
+
 	<li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname">logout</a></li>
 	
 	</ul>
@@ -100,7 +101,7 @@
 <script type="text/javascript" src="services/blogservice.js"></script>
 
 <script type="text/javascript" src="controllers/blogpostdetailscontroller.js"></script>
-<script type="text/javascript" src="controllers/homecontroller.js"></script>
+
 
 <script type="text/javascript" src="controllers/notificationcontroller.js"></script>
 <script type="text/javascript" src="services/notificationservice.js"></script>

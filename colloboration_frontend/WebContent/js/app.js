@@ -62,11 +62,17 @@ app.config(function($routeProvider){
 		controller:'NotificationController'
 	})
 	
+		.when('/uploadprofilepic',{
+		templateUrl:'views/uploadprofilepic.html'
+	})
+	
 	.otherwise({
 		templateUrl:'views/login.html',
 		controller:'UserController'
 
 	})
+	
+
 	
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
