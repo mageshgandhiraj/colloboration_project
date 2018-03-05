@@ -1,7 +1,5 @@
 package com.niit.dao;
 
-
-
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -14,7 +12,7 @@ import com.niit.model.ProfilePicture;
 @Transactional
 public class ProfilePictureDaoImpl implements ProfilePictureDao{
    @Autowired
-private SessionFactory sessionFactory;
+   private SessionFactory sessionFactory;
 	public void uploadProfilePicture(ProfilePicture profilePicture) {
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(profilePicture);
@@ -24,8 +22,9 @@ private SessionFactory sessionFactory;
 	public ProfilePicture getProfilePicture(String email) {
 		Session session=sessionFactory.getCurrentSession();
 		ProfilePicture profilePicture=(ProfilePicture)session.get(ProfilePicture.class, email);
-		System.out.println("DAO " + email + " " + profilePicture);
+		System.out.println("DAO " + email + "" + profilePicture);		
 		return profilePicture;
 	}
 
 }
+
