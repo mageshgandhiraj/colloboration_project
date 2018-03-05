@@ -54,6 +54,17 @@
 							<li><a href="#/getblogs">Get Blogs</a></li>
 							</ul></li>
 							
+							<li class="dropdown"><a href="" class="dropdown-toggle"
+						data-toggle="dropdown" ng-show="loggedInUser.firstname">Friend<b
+						class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/suggestedusers">Suggestedusers</a></li>
+							<li><a href="#/pendingrequests">Pendingrequests</a></li>
+							<li><a href="#/friends">Friends</a></li>
+							</ul></li>
+							
+							
+							
 	<li class="dropdown" >
 <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname"> 
 <span class="glyphicon glyphicon-globe" > 
@@ -105,6 +116,9 @@
 
 <script type="text/javascript" src="controllers/notificationcontroller.js"></script>
 <script type="text/javascript" src="services/notificationservice.js"></script>
+
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
 
 </html>
 
