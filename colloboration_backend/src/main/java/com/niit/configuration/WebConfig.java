@@ -7,19 +7,18 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="com.niit")
+@ComponentScan(basePackages = "com.niit")
 public class WebConfig extends WebMvcConfigurerAdapter {
-	
-	public WebConfig(){
+
+	public WebConfig() {
 		System.out.println("WEBCONFIG class is instantiated");
 	}
-		@Bean(name = "multipartResolver")
-		public CommonsMultipartResolver commonsMultipartResolver() {
-			return new CommonsMultipartResolver();
-			
 
-		}
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver commonsMultipartResolver() {
+		return new CommonsMultipartResolver();
+
+	}
 }

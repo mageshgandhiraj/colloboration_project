@@ -17,39 +17,38 @@ import com.niit.dao.ProfilePictureDao;
 import com.niit.model.ErrorClazz;
 import com.niit.model.ProfilePicture;
 
-
 @Controller
 public class ProfilePictureController {
-@Autowired
-private ProfilePictureDao profilePictureDao;
-	@RequestMapping(value="/uploadprofilepic",method=RequestMethod.POST)
-	
-	public ResponseEntity<?> uploadProfilePicture(@RequestParam CommonsMultipartFile image,HttpSession session){
-		String email=(String)session.getAttribute("loginId");
-		if(email==null){
-			ErrorClazz error=new ErrorClazz(4,"Unauthrozied access.. Please login");
-			return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED); 
+	@Autowired
+	private ProfilePictureDao profilePictureDao;
+
+	@RequestMapping(value = "/uploadprofilepic", method = RequestMethod.POST)
+
+	public ResponseEntity<?> uploadProfilePicture(@RequestParam CommonsMultipartFile image, HttpSession session) {
+		String email = (String) session.getAttribute("loginId");
+		if (email == null) {
+			ErrorClazz error = new ErrorClazz(4, "Unauthrozied access.. Please login");
+			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
-		ProfilePicture profilePicture=new ProfilePicture();
+		ProfilePicture profilePicture = new ProfilePicture();
 		profilePicture.setEmail(email);
 		profilePicture.setImage(image.getBytes());
 		profilePictureDao.uploadProfilePicture(profilePicture);
-		return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
+		return new ResponseEntity<ProfilePicture>(profilePicture, HttpStatus.OK);
 	}
-	
-	
-	@RequestMapping(value="/getimage/{email:.+}",method=RequestMethod.GET)
-	public @ResponseBody byte[] getImage(@PathVariable String email,HttpSession session){
-		String auth=(String)session.getAttribute("loginId");
-		if(auth==null){
+
+	@RequestMapping(value = "/getimage/{email:.+}", method = RequestMethod.GET)
+	public @ResponseBody byte[] getImage(@PathVariable String email, HttpSession session) {
+		String auth = (String) session.getAttribute("loginId");
+		if (auth == null) {
 			return null;
 		}
 		System.out.println(email);
-		ProfilePicture profilePicture=profilePictureDao.getProfilePicture(email);
-		
-		if(profilePicture==null)
+		ProfilePicture profilePicture = profilePictureDao.getProfilePicture(email);
+
+		if (profilePicture == null)
 			return null;
-		System.out.println("Image is "  + profilePicture.getImage() + " " + email);
+		System.out.println("Image is " + profilePicture.getImage() + " " + email);
 		return profilePicture.getImage();
 	}
-	}
+}

@@ -21,46 +21,41 @@ import com.niit.model.Notification;
 import com.niit.model.ProfilePicture;
 import com.niit.model.User;
 
-
-
-
 @Configuration
 @EnableTransactionManagement
 public class DBConfiguration {
-	
-	public DBConfiguration(){
+
+	public DBConfiguration() {
 		System.out.println("DBCOnfiguration class instantiated");
 	}
+
 	@Bean
 	public SessionFactory sessionFactory() {
-		LocalSessionFactoryBuilder lsf=
-				new LocalSessionFactoryBuilder(getDataSource());
-		Properties hibernateProperties=new Properties();
-		hibernateProperties.setProperty(
-				"hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		LocalSessionFactoryBuilder lsf = new LocalSessionFactoryBuilder(getDataSource());
+		Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogPostLikes.class,Notification.class,BlogComment.class,ProfilePicture.class,Friend.class};
-	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
+		Class classes[] = new Class[] { User.class, Job.class, BlogPost.class, BlogPostLikes.class, Notification.class,
+				BlogComment.class, ProfilePicture.class, Friend.class };
+		return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
+
 	@Bean
 	public DataSource getDataSource() {
-	    BasicDataSource dataSource = new BasicDataSource();
-	    dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-	    dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-	    dataSource.setUsername("test");
-	    dataSource.setPassword("admin");
-	    return dataSource;
-	    
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+		dataSource.setUsername("test");
+		dataSource.setPassword("admin");
+		return dataSource;
+
 	}
+
 	@Bean
-	public HibernateTransactionManager hibTransManagement(){
+	public HibernateTransactionManager hibTransManagement() {
 		return new HibernateTransactionManager(sessionFactory());
 	}
 
 }
-
-	
-	
-

@@ -1,5 +1,6 @@
 <h3>Job Details</h3>
-Search : <input type="text" ng-model="searchTxt">
+Search :
+<input type="text" ng-model="searchTxt">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -10,14 +11,15 @@ Search : <input type="text" ng-model="searchTxt">
 		</tr>
 	</thead>
 	<tbody>
-		
+
 		<tr ng-repeat="job in jobs | filter:searchTxt">
 			<td><a>{{job.jobTitle}}</a></td>
 			<td>{{job.skillsRequired}}</td>
 			<td>{{job.postedOn | date:'medium'}}</td>
-			
-			<td><a href="#/getjob/{{job.id}}"><span class="glyphicon glyphicon-info-sign"></span></td>
-		
+
+			<td><a href="#/getjob/{{job.id}}"><span
+					class="glyphicon glyphicon-info-sign"></span></td>
+
 		</tr>
 	</tbody>
 </table>

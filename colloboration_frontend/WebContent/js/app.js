@@ -1,6 +1,3 @@
-/**
- * Angular module
- */
 var app=angular.module("app",['ngRoute','ngCookies'])
 app.config(function($routeProvider){
 	$routeProvider
@@ -20,8 +17,6 @@ app.config(function($routeProvider){
 		templateUrl:'views/home.html',
 		controller:'NotificationController'
 	})
-	
-	
 	.when('/addjob',{
 		templateUrl:'views/jobform.html',
 		controller:'JobController'
@@ -56,37 +51,41 @@ app.config(function($routeProvider){
 		templateUrl:'views/approvalform.html',
 		controller:'BlogPostDetailController'
 	})
-
 	.when('/getnotification/:id',{
 		templateUrl:'views/notificationdetails.html',
 		controller:'NotificationController'
 	})
-	
-		.when('/uploadprofilepic',{
+	.when('/uploadprofilepic',{
 		templateUrl:'views/uploadprofilepic.html'
 	})
-	
 	.when('/suggestedusers',{
 		templateUrl:'views/suggestedusers.html',
 		controller:'FriendController'
 	})
+
 	
 	.when('/pendingrequests',{
 		templateUrl:'views/pendingrequests.html',
 		controller:'FriendController'
 	})
-    .when('/friends',{
-		templateUrl:'views/friendslist.html',
+	
+	
+	.when('/friends',{
+		templateUrl:'views/friendlist.html',
 		controller:'FriendController'
 	})
+
+	.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatController'
+	})
+
 	
 	.otherwise({
 		templateUrl:'views/login.html',
 		controller:'UserController'
 
 	})
-	
-
 	
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
